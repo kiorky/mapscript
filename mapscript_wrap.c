@@ -2523,15 +2523,15 @@ static swig_module_info swig_module = {swig_types, 44, 0, 0, 0, 0};
 #define SWIG_as_voidptrptr(a) ((void)SWIG_as_voidptr(*a),(void**)(a)) 
 
 
-#include "../../mapserver.h"
-#include "../../maptemplate.h"
-#include "../../mapogcsld.h"
-#include "../../mapows.h"
-#include "../../cgiutil.h"
-#include "../../mapcopy.h"
-#include "../../maperror.h"
-#include "../../mapprimitive.h"
-#include "../../mapshape.h"
+#include "mapserver.h"
+#include "maptemplate.h"
+#include "mapogcsld.h"
+#include "mapows.h"
+#include "cgiutil.h"
+#include "mapcopy.h"
+#include "maperror.h"
+#include "mapprimitive.h"
+#include "mapshape.h"
 
 #ifdef SWIGPYTHON
 #include "pygdioctx/pygdioctx.h"
@@ -5476,10 +5476,10 @@ SWIGINTERN errorObj *errorObj_next(errorObj *self){
         return ep->next;
     }
 
-#include "../../mapserver.h"
+#include "mapserver.h"
 
 
-#include "../../maphash.h"
+#include "maphash.h"
 
 SWIGINTERN hashTableObj *new_hashTableObj(){
 
