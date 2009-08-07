@@ -26,7 +26,7 @@ def mapserver_config(arg):
             res = res[:-1]
     return res
 ms_version = '5.02.2'
-ms_version += '.32'
+ms_version += '.33'
 try:
     if ms_version[0] in mapserver_config('version'):
         ms_install_dir = os.path.dirname(
@@ -53,7 +53,7 @@ setup(
     version = ms_version,
     description = "Python interface to MapServer",
     author = "MapServer Project",
-    url = "http://mapserver.gis.umn.edu/",
+    url = "http://mapserver.org/",
     zip_safe = False,
     packages = find_packages(),
     include_package_data = True,
