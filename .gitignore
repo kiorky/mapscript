@@ -1,0 +1,7 @@
+bin
+build
+mapscript.egg-info
+t
+_mapscript.so
+develop-eggs
+.installed.cfg

@@ -41,6 +41,7 @@ try:
         ms_libraries_pre = "%s" % (mapserver_config('libs'))
         ms_extra_libraries = mapserver_config('dep-libs')
 except Exception, e:
+    import pdb;pdb.set_trace()  ## Breakpoint ##
     pass
 if not os.path.exists('mapscript_wrap.c') :
     os.system('swig -python -shadow -modern %s '
