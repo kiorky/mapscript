@@ -25,8 +25,8 @@ def mapserver_config(arg):
         if res[-1] == '\n':
             res = res[:-1]
     return res
-ms_version = '5.02.2'
-ms_version += '.33'
+ms_version = '5.6.3'
+ms_version += '.0'
 try:
     if ms_version[0] in mapserver_config('version'):
         ms_install_dir = os.path.dirname(

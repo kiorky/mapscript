@@ -1,4 +1,4 @@
-# $Id: labeltest.py 4353 2005-01-30 02:18:27Z sean $
+# $Id: labeltest.py 8000 2008-10-24 15:42:15Z aboudreault $
 #
 # Project:  MapServer
 # Purpose:  xUnit style Python mapscript tests of Map
@@ -40,6 +40,15 @@ from testing import mapscript, MapTestCase
 
 # ===========================================================================
 # Test begins now
+
+class NewLabelsTestCase(MapTestCase):
+
+    def testLabelBinding(self):
+        """attribute binding can be set and get"""
+        new_label = mapscript.labelObj()
+        assert (not new_label.getBinding(mapscript.MS_LABEL_BINDING_COLOR))
+        new_label.setBinding(mapscript.MS_LABEL_BINDING_COLOR,"NEW_BINDING")
+        assert (new_label.getBinding(mapscript.MS_LABEL_BINDING_COLOR) == "NEW_BINDING")
 
 class LabelCacheMemberTestCase(MapTestCase):
 

@@ -1,5 +1,5 @@
 /******************************************************************************
- * $Id: pymodule.i 6470 2007-08-06 03:25:14Z hobu $
+ * $Id: pymodule.i 9497 2009-10-20 03:27:18Z warmerdam $
  *
  * Project:  MapServer
  * Purpose:  Python-specific enhancements to MapScript
@@ -156,5 +156,61 @@ MapServerError = _mapscript.MapServerError
 MapServerChildError = _mapscript.MapServerChildError
 %}
 
+/* The bogus "if 1:" is to introduce a new scope to work around indentation
+   handling with pythonappend in different versions.  (#3180) */
+%feature("pythonappend") layerObj %{if 1:
+	  if args and len(args)!=0:
+		self.p_map=args[0]
+	  else:
+		self.p_map=None%}
 
+/* The bogus "if 1:" is to introduce a new scope to work around indentation
+   handling with pythonappend in different versions. (#3180) */
+%feature("pythonappend") classObj %{if 1:
+	   if args and len(args)!=0:
+		self.p_layer=args[0]
+	   else:
+		self.p_layer=None%}
+
+%feature("shadow") insertClass %{
+	def insertClass(*args):
+        actualIndex=$action(*args)
+        args[1].p_layer=args[0]
+        return actualIndex%}
+
+%feature("shadow") getClass %{
+	def getClass(*args):
+		clazz = $action(*args)
+		if clazz:
+			if args and len(args)!=0:
+				clazz.p_layer=args[0]
+			else:
+				clazz.p_layer=None
+		return clazz%}
+
+%feature("shadow") insertLayer %{
+	def insertLayer(*args):
+        actualIndex=$action(*args)
+        args[1].p_map=args[0]
+        return actualIndex%}
+
+%feature("shadow") getLayer %{
+	def getLayer(*args):
+		layer = $action(*args)
+		if layer:
+			if args and len(args)!=0:
+				layer.p_map=args[0]
+			else:
+				layer.p_map=None
+		return layer%}
+
+%feature("shadow") getLayerByName %{
+	def getLayerByName(*args):
+		layer = $action(*args)
+		if layer:
+			if args and len(args)!=0:
+				layer.p_map=args[0]
+			else:
+				layer.p_map=None
+		return layer%}
 

@@ -1,4 +1,4 @@
-# $Id: styletest.py 6515 2007-08-08 20:27:18Z hobu $
+# $Id: styletest.py 8000 2008-10-24 15:42:15Z aboudreault $
 #
 # Project:  MapServer
 # Purpose:  xUnit style Python mapscript tests of Map Styles
@@ -84,6 +84,13 @@ class NewStylesTestCase(MapTestCase):
         assert new_style.color.green == 2
         assert new_style.color.blue == 3
     
+    def testStyleBinding(self):
+        """attribute binding can be set and get"""
+        new_style = mapscript.styleObj()
+        assert (not new_style.getBinding(mapscript.MS_STYLE_BINDING_COLOR))
+        new_style.setBinding(mapscript.MS_STYLE_BINDING_COLOR,"NEW_BINDING")
+        assert (new_style.getBinding(mapscript.MS_STYLE_BINDING_COLOR) == "NEW_BINDING")
+
     def testAppendNewStyle(self):
         """a new style can be appended properly"""
         p_layer = self.map.getLayerByName('POINT')

@@ -1,5 +1,5 @@
 /******************************************************************************
- * $Id: pyextend.i 6582 2007-08-14 16:20:23Z hobu $
+ * $Id: pyextend.i 9453 2009-10-13 20:06:23Z aboudreault $
  *
  * Project:  MapServer
  * Purpose:  Python-specific extensions to MapScript objects
@@ -316,25 +316,25 @@ def fromstring(data, mappath=None):
         if (file == Py_None) /* write to stdout */
         {
             ctx = msNewGDFileCtx(stdout);
-            retval = msSaveImageGDCtx(self->img.gd, ctx, self->format);
+            retval = msSaveImageGDCtx(self, ctx, self->format);
             ctx->gd_free(ctx);
         }
         else if (PyFile_Check(file)) /* a Python (C) file */
         {
             stream = PyFile_AsFile(file);
             ctx = msNewGDFileCtx(stream);
-            retval = msSaveImageGDCtx(self->img.gd, ctx, self->format);
+            retval = msSaveImageGDCtx(self, ctx, self->format);
             ctx->gd_free(ctx);
         }
         else /* presume a Python file-like object */
         {
             if( MS_DRIVER_GD(self->format) )
-                imgbuffer = msSaveImageBufferGD(self->img.gd, &imgsize,
+                imgbuffer = msSaveImageBufferGD(self, &imgsize,
                                                 self->format);
 #ifdef USE_AGG
             else if( MS_DRIVER_AGG(self->format) )
             {
-                imgbuffer = msSaveImageBufferAGG(   self->img.gd, &imgsize,
+                imgbuffer = msSaveImageBuffer(   self, &imgsize,
                                                     self->format);
             }
 #endif  
@@ -364,7 +364,7 @@ def fromstring(data, mappath=None):
         unsigned char *imgbytes;
         PyObject *imgstring; 
 
-        imgbytes = msSaveImageBufferGD(self->img.gd, &size, self->format);
+        imgbytes = msSaveImageBufferGD(self, &size, self->format);
         if (size == 0)
         {
             msSetError(MS_IMGERR, "failed to get image buffer", "saveToString()");
