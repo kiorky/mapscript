@@ -53,6 +53,23 @@ setup(
     name = "mapscript",
     version = ms_version,
     description = "Python interface to MapServer sponsorised by Makina Corpus",
+    long_description="""
+======================================
+Makina Corpus sponsorised software
+======================================
+|makinacom|_
+
+* `Planet Makina Corpus <http://www.makina-corpus.org>`_
+* `Contact us <mailto:python@makina-corpus.org>`_
+
+.. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
+.. _makinacom:  http://www.makina-corpus.com
+
+
+
+
+    
+    """,
     author = "MapServer Project",
     url = "http://mapserver.org/",
     zip_safe = False,
