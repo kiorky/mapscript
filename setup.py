@@ -52,7 +52,7 @@ os.environ['LDFLAGS']  = '%s %s' % (ms_libraries_pre, ms_extra_libraries)
 setup(
     name = "mapscript",
     version = ms_version,
-    description = "Python interface to MapServer",
+    description = "Python interface to MapServer sponsorised by Makina Corpus",
     author = "MapServer Project",
     url = "http://mapserver.org/",
     zip_safe = False,
