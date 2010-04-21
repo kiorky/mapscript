@@ -54,6 +54,10 @@ setup(
     version = ms_version,
     description = "Python interface to MapServer sponsorised by Makina Corpus",
     long_description="""
+Introduction
+===================
+.. contents::
+
 ======================================
 Makina Corpus sponsorised software
 ======================================
