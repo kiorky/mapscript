@@ -7,8 +7,7 @@
 #   python setup.py install
 #   or easy_install mapscript
 #
-# DEVELOP (build and run in place)
-#   python setup.py develop
+# 
 import os
 
 from setuptools import setup, Extension, find_packages
